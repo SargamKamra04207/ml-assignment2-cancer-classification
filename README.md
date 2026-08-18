@@ -27,11 +27,7 @@ A Streamlit application was also developed to allow users to upload test data, s
 
 The **Breast Cancer Wisconsin Diagnostic dataset** from the UCI Machine Learning Repository was used for this experiment.
 
-The dataset contains:
-
-- **569 observations**
-- **30 numerical predictive features**
-- **1 target variable (`diagnosis`)**
+The dataset contains 569 observations, 30 numerical predictive features, and one binary target variable (diagnosis).
 
 The target variable represents whether the tumor is:
 
@@ -50,6 +46,15 @@ The original `id` column was removed because it is an identifier and does not pr
 The dataset contained **no missing values**.
 Feature scaling using `StandardScaler` was applied to **Logistic Regression and KNN**, while the **Decision Tree, Gaussian Naive Bayes and Random Forest** models were trained using the original feature values.
 
+### Preprocessing and Modelling Approach
+
+The dataset was first inspected for missing values and duplicate or non-predictive identifier information. The `id` column was removed before modelling.
+
+The `diagnosis` values were converted into binary numerical labels, where 0 represents a benign case and 1 represents a malignant case.
+
+The data was divided into training and testing sets using an 80:20 stratified split. StandardScaler was used for Logistic Regression and KNN because these models are sensitive to feature scale. Decision Tree, Gaussian Naive Bayes and Random Forest were trained using the unscaled feature values.
+
+All five models were evaluated on the same held-out test set.
 
 ## C. GitHub Repository
 
@@ -130,7 +135,6 @@ ml-assignment2-cancer-classification/
 ├── test_data.csv
 ├── model_results.csv
 ├── wdbc.data
-├── requirements.txt
 │
 └── model/
     ├── logistic_regression.pkl
